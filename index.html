@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanket Mishra  Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href='../../unpkg.com/boxicons%402.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    /* Minimal visual update only: keep all JS/structure unchanged, improve video scaling & alignment */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --panel-bg: #fff;
+      --overlay: rgba(10, 10, 12, 0.6);
+      --accent: #0b76ff;
+      --title-color: #111827;
+      --muted: #666;
+      --shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+
+    .project-page {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--overlay);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: auto;
+    }
+    .project-page.show { display: flex; }
+
+    /* Panel: allow internal scroll, centered, with consistent padding */
+    .project-panel {
+      width: 100%;
+      max-width: 1100px;
+      background: var(--panel-bg);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: block;
+      max-height: calc(100vh - 48px);
+      position: relative;
+    }
+
+    .project-main {
+      padding: 28px;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Title and description */
+    .project-panel h1 {
+      margin: 0 0 6px 0;
+      font-size: 28px;
+      color: var(--title-color);
+      font-weight: 700;
+    }
+    .project-meta {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Responsive video: use aspect-ratio and max-height so it never overflows panel */
+    .project-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: calc(60vh);
+      border-radius: 8px;
+      background: #000;
+      display: block;
+      margin-top: 18px;
+    }
+
+    /* Place close button visually consistent inside panel top-right */
+    .close-project {
+      position: absolute;
+      right: 16px;
+      top: 12px;
+      background: transparent;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--title-color);
+      padding: 6px;
+    }
+
+    .features-list { margin-top: 16px; color: var(--title-color); }
+    .back-to-portfolio { display:inline-block; margin-top:18px; text-decoration:none; color:var(--accent); font-weight:500; }
+
+    @media (max-width: 980px) {
+      .project-main { padding: 18px; }
+      .project-panel h1 { font-size: 22px; }
+      .project-video { max-height: calc(45vh); }
+      .close-project { right: 10px; top: 8px; font-size: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!--Header site-->
+  <header>
+    <div class="logo"><span>S</span>anket.</div>
+    <ul class="navlist">
+      <li><a href="#home" style="--i:1;">Home</a></li>
+      <li><a href="#about" style="--i:2;">About</a></li>
+      <li><a href="#services" style="--i:3;">Experience</a></li>
+      <li><a href="#skills" style="--i:4;">Skills</a></li>
+      <li><a href="#Portfolio" style="--i:5;">Projects</a></li>
+      <li><a href="#contact" style="--i:6;">Contact</a></li>
+    </ul>
+    <div id="menu-icon" class="bx bx-menu"></div>
+  </header>
+
+  <!-- HOME SECTION -->
+  <section id="home" class="home">
+    <div class="home-content scroll-scale">
+      <h1>Hello, <br> I'm Sanket Mishra.</h1>
+      <div class="change-text">
+        <h3></h3>
+        <h3>
+          <span class="word"> Software&nbsp; Engineer.</span>
+          <span class="word"> Python&nbsp; Developer.</span>
+        </h3>
+      </div>
+      <p>
+        A passionate and innovative Software Engineer specializing in Artificial Intelligence and Machine Learning, committed to solving real-world problems with smart technologies and scalable solutions.
+      </p>
+      <div class="info-box">
+        <div class="email-info">
+          <h5>Email:</h5>
+          <span>sannketmishra@gmail.com</span>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="https://drive.google.com/file/d/1iAM4dYdWl2Xl3GhHMD3pW7ri_Lt5sDFj/view?usp=sharing" target="_blank" class="btn">Download CV</a>
+        <a href="mailto: sannketmishra@gmail.com" class="btn">Hire Me Now!</a>
+      </div>
+    </div>
+    <div class="home-image scroll-scale">
+      <div class="img-box">
+        <img src="images/photo.jpg" alt="Profile Picture" style="height: 80%; width: 60%; object-fit: cover; border-radius: 50% / 40%;" />
+      </div>
+    </div>
+
+    <div class="liquid-shape">
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" width="0%" id="blobSvg">
+        <path fill="#12f7ff">
+          <animate attributeName="d" dur="1000ms" repeatCount="indefinite" values="
+                        M372.5,341Q250,432,160,341Q70,250,160,151Q250,52,372.5,151Q495,250,372.5,341Z,
+                        M369.5,295.5Q250,341,207,295.5Q164,250,207,185.5Q250,121,369.5,185.5Q489,250,369.5,295.5Z,
+                        M372.5,341Q250,432,160,341Q70,250,160,151Q250,52,372.5,151Q495,250,372.5,341Z;
+                        ">
+          </animate>
+        </path>
+      </svg>
+    </div>
+  </section>
+
+  <!--------- ABOUT SECTION -------------------------------------------->
+  <section id="about" class="about">
+    <div class="img-about scroll-scale"></div>
+    <div class="about-content scroll-scale">
+      <span> LET ME INTRODUCE MYSELF</span>
+      <h2>ABOUT ME</h2>
+      <p>
+        Hello! My name is Sanket Mishra, an MCA graduate and passionate Software Engineer currently working at Raj Yug IT Solution. I specialize in Artificial Intelligence and Machine Learning, developing smart solutions that create real business value.
+        <br /><br />
+        Prior to joining Raj Yug IT, I worked at RSL Solution Pvt. Ltd. as a Python Developer. During my time there, I strengthened my expertise in backend development, data analysis, and automation. With over 1.3 years of professional experience, I have refined my skills in Python, AI model development, and the integration of machine learning systems.
+        <br /><br />
+        I believe in continuous learning and innovation. Whether its developing intelligent systems, optimizing business processes, or exploring new AI technologies, I bring a strong problem-solving mindset to every project.
+        <br /><br />
+        I am always eager to connect with professionals, teams, and organizations that value technology, creativity, and growth. Feel free to reach out to me at <a href="mailto:sannketmishra@gmail.com">sannketmishra@gmail.com</a> — let's collaborate and build something impactful!
+      </p>
+      <div class="btn-box"></div>
+    </div>
+  </section>
+
+  <!---------- Service SECTION ---------->
+
+  <section id="services" class="services">
+    <div class="main-text ">
+      <h2>MY EXPERIENCE </h2>
+    </div>
+    <div class="section-services scroll-scale">
+      <div class="service-box">
+        <i class='bx bx-code-alt service-icon'></i>
+        <h3>Software Engineer</h3>
+        <p><i><b>I am working as a Software Engineer at RajYug IT Solutions.</b></i></p>
+        <h3>Software Engineer - AI/ML Developer</h3>
+        <p>
+          Over the past 1.10 years, I have worked extensively across AI, Machine Learning, and Python Development domains.
+          At RSL Solution Pvt. Ltd., I focused on building and deploying robust Python-based applications, performing data preprocessing, automation tasks, and developing predictive machine learning models tailored to business needs.
+          <br /><br />
+          Currently, at Raj Yug IT Solution, I specialize in AI and ML development, working on end-to-end projects that involve data collection, model training, fine-tuning, validation, and real-world deployment.
+          I collaborate closely with cross-functional teams to integrate AI systems into production, ensuring scalability, accuracy, and efficiency.
+          <br /><br />
+          My role demands continuous innovation, staying updated with cutting-edge trends in AI/ML, and implementing best practices to drive real-world impact through smart solutions.
+        </p>
+        <div class=" btn-box service-btn">
+          <a href="https://www.rajyugsolutions.com/" target="_blank" class="btn">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--------- SKILLS SECTION -------------------------------------------->
+  <section id="skills" class="skills">
+    <div class="main-text scroll-scale">
+      <span> Technical Skills And Tools</span>
+      <h2>My skills</h2>
+    </div>
+    <div class="skill-main">
+      <div class="skill-left scroll-scale">
+        <h3>Technical Skills</h3>
+        <div class="skill-bar">
+          <div class="info">
+            <p>Python</p>
+            <p>95%</p>
+          </div>
+          <div class="bar"><span class="HTML"></span></div>
+        </div>
+
+        <div class="skill-bar">
+          <div class="info">
+            <p>Machine Learning</p>
+            <p>95%</p>
+          </div>
+          <div class="bar"><span class="CSS"></span></div>
+        </div>
+
+        <div class="skill-bar">
+          <div class="info">
+            <p>Computer Vision</p>
+            <p>90%</p>
+          </div>
+          <div class="bar"><span class="JavaScript"></span></div>
+        </div>
+
+        <div class="skill-bar">
+          <div class="info">
+            <p>Flask</p>
+            <p>90%</p>
+          </div>
+          <div class="bar"><span class="JAVA"></span></div>
+        </div>
+        <div class="skill-bar">
+          <div class="info">
+            <p>RAG + LangChain</p>
+            <p>85%</p>
+          </div>
+          <div class="bar"><span class="PHP"></span></div>
+        </div>
+
+        <div class="skill-bar">
+          <div class="info">
+            <p>Deep Learning</p>
+            <p>80%</p>
+          </div>
+          <div class="bar"><span class="MYSQL"></span></div>
+        </div>
+
+        <div class="skill-bar">
+          <div class="info">
+            <p>FastAPI</p>
+            <p>90%</p>
+          </div>
+          <div class="bar"><span class="PHP"></span></div>
+        </div>
+      </div>
+
+      <div class="skill-right scroll-scale">
+        <h3>TOOLS</h3>
+        <div class="porfessional">
+          <div class="box">
+            <div class="circle" data-dots="90" data-percent="90"></div>
+            <div class="text"><big>90%</big><small>Visual Studio Code</small></div>
+          </div>
+
+          <div class="box">
+            <div class="circle" data-dots="90" data-percent="90"></div>
+            <div class="text"><big>90%</big><small>Google Colab</small></div>
+          </div>
+
+          <div class="box">
+            <div class="circle" data-dots="90" data-percent="90"></div>
+            <div class="text"><big>90%</big><small>Power BI</small></div>
+          </div>
+
+          <div class="box">
+            <div class="circle" data-dots="90" data-percent="90"></div>
+            <div class="text"><big>90%</big><small>Postman</small></div>
+          </div>
+          <div class="box">
+            <div class="circle" data-dots="80" data-percent="80"></div>
+            <div class="text"><big>80%</big><small>GitHub</small></div>
+          </div>
+          <div class="box">
+            <div class="circle" data-dots="80" data-percent="80"></div>
+            <div class="text"><big>80%</big><small>Docker</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- -----------------------------------------------Projects----------------------------------------- ------------>
+  <section id="Portfolio" class="Portfolio">
+    <div class="main-text scroll-scale">
+      <h2>Latest Projects</h2>
+    </div>
+    <div class="container">
+      <div class="filter-buttons scroll-scale">
+        <button class="button" data-filter="all">All</button>
+        <button class="button" data-filter=".product">Product</button>
+        <button class="button" data-filter=".interacting">Interacting</button>
+      </div>
+
+      <div class="portfolio-gallery scroll-bottom">
+
+        <!-- LangChain DataBot -->
+        <div class="port-box mix interacting" data-slug="langchain-databot"
+             data-title="LangChain DataBot"
+             data-desc="LangChain DataBot is an interactive assistant that allows users to query and analyze document data using LangChain + vector search. Built with Python and a lightweight web UI for demos."
+             data-video="Vedios\ai chat and voice bot.mp4">
+          <div class="port-image">
+            <img src="images/ai_chatbot.jpg" alt="" />
+          </div>
+          <div>
+            <div class="port-content">
+              <h3> AI Chatbot </h3>
+              <a href="#project/langchain-databot" class="open-project" title="Open LangChain DataBot"><i class='bx bx-link-external'></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ai Inventory Management -->
+        <div class="port-box mix product" data-slug="ai-inventory"
+             data-title="Ai Inventory Management"
+             data-desc="AI Inventory Management: Built an AI-driven inventory management system that predicts reordering needs using daily usage patterns and automates purchase orders end-to-end. The system analyzes stock trends, generates PDF-based POs, and triggers real-time email alerts to suppliers and managers. Integrated interactive dashboards, KPIs, and smart analytics to enable fast, data-driven decision-making."
+             data-video="Vedios\Inventory.webm">
+          <div class="port-image">
+            <img src="images/aiinventory.jpg" alt="" />
+          </div>
+          <div>
+            <div class="port-content">
+              <h3> Ai Inventory Management </h3>
+              <a href="#project/ai-inventory" class="open-project" title="Open AI Inventory Management"><i class='bx bx-link-external'></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ai Numerologiest -->
+        <div class="port-box mix interacting" data-slug="ai-numerology"
+             data-title="Ai Numerologiest"
+             data-desc="Ai Numerologiest computes personal numbers, suggests favourable months, and provides a career compatibility matrix using numerology algorithms with ML-driven patterns. Built with Flask + Python."
+             data-video="Vedios\numero.mp4">
+          <div class="port-image">
+            <img src="images/AI-Numerology.jpg" alt="" />
+          </div>
+          <div>
+            <div class="port-content">
+              <h3 style="color: white;"> Ai Numerologiest </h3>
+              <a href="#project/ai-numerology" class="open-project" title="Open AI Numerologiest"><i class='bx bx-link-external'></i></a>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- PPE Detection -->
+        <div class="port-box mix interacting" data-slug="ppe-detection"
+             data-title="PPE Detection"
+             data-desc="PPE Detection: real-time PPE detection using YOLOv8 and OpenCV with alerts and logging for compliance and safety monitoring."
+             data-video="Vedios\detect.mp4">
+          <div class="port-image">
+            <img src="images/helmet.jpg" alt="" />
+          </div>
+          <div>
+            <div class="port-content">
+              <h3 style="color: white;"> PPE Detection</h3>
+              <a href="#project/ppe-detection" class="open-project" title="Open PPE Detection"><i class='bx bx-link-external'></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End Portfolio Section -->
+
+  <!-- Single-file project detail "page" (sidebar removed) -->
+  <div id="projectPage" class="project-page" aria-hidden="true" role="dialog">
+    <div class="project-panel" role="document" aria-live="polite">
+      <div class="project-main">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <h1 id="pp-title">Project Title</h1>
+            <div id="pp-type" style="color:#666; font-size:14px;"></div>
+          </div>
+          <div>
+            <button id="pp-close" class="close-project" aria-label="Close project page">&times;</button>
+          </div>
+        </div>
+
+        <p id="pp-desc" class="project-meta"></p>
+
+        <div id="pp-video-wrap" style="margin-top:18px;">
+          <video id="pp-video" class="project-video" controls playsinline preload="metadata" style="display:none;">
+            <source id="pp-video-src" src="" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div id="pp-features" class="features-list"></div>
+
+        <!-- back link for resume-friendly navigation -->
+        <a id="pp-back" class="back-to-portfolio" href="#Portfolio">← Back to portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="contact" class="contact">
+    <div class="main-text scroll-scale">
+      <span>Ask me anything</span>
+      <h2>Contact me</h2>
+    </div>
+    <style>
+      .neon-border {
+        border: 4px solid #12ff6d;
+        border-radius: 10px;
+        transition: border-color 0.3s ease-in-out;
+        display: inline-block;
+        padding: 10px;
+        background-color: #fff;
+        cursor: pointer;
+      }
+
+      .neon-border:hover {
+        border-color: #00baff;
+        background-color: #f0f8ff;
+      }
+    </style>
+
+    <div style="text-align: center;">
+
+      <a href="https://www.linkedin.com/in/sanket-mishra5/" target="_blank" style="margin-right: 60px;">
+        <img src="images/linkedin.png" alt="LinkedIn" width="70" height="70" class="neon-border" />
+      </a>
+
+      <a href="mailto:sannketmishra@gmail.com" style="margin-right: 60px;">
+        <img src="images/apple.png" alt="Email" width="70" height="70" class="neon-border" />
+      </a>
+
+      <a href="https://github.com/your_username" target="_blank" style="margin-right: 60px;">
+        <img src="images/github.png" alt="GitHub" width="70" height="70" class="neon-border" />
+      </a>
+
+    </div>
+
+  </section>
+
+  <!--footer website-->
+  <footer>
+    <p class="scroll-scale">© 2025 - Developed by <strong>Sanket Mishra</strong></p>
+    <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+  </footer>
+
+  <script src="mixitup.min.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    /* Single-file routing + project detail renderer (sidebar removed)
+       - Keeps your existing page content/logic intact.
+       - Clicking a project uses hash: #project/<slug>
+       - Direct navigation to a hash opens the project view.
+    */
+
+    (function () {
+      // Build a map of project data from .port-box elements
+      const projectBoxes = document.querySelectorAll('.port-box[data-slug]');
+      const projects = {};
+      projectBoxes.forEach(box => {
+        const slug = box.dataset.slug;
+        projects[slug] = {
+          slug,
+          title: box.dataset.title || (box.querySelector('h3') ? box.querySelector('h3').innerText.trim() : slug),
+          desc: box.dataset.desc || '',
+          video: box.dataset.video || '',
+          features: box.dataset.features || null,
+        };
+      });
+
+      // DOM refs
+      const projectPage = document.getElementById('projectPage');
+      const ppTitle = document.getElementById('pp-title');
+      const ppDesc = document.getElementById('pp-desc');
+      const ppVideo = document.getElementById('pp-video');
+      const ppVideoSrc = document.getElementById('pp-video-src');
+      const ppFeatures = document.getElementById('pp-features');
+      const ppClose = document.getElementById('pp-close');
+      const ppBack = document.getElementById('pp-back');
+
+      function openProject(slug) {
+        const p = projects[slug];
+        if (!p) return;
+        ppTitle.textContent = p.title;
+        ppDesc.textContent = p.desc || '';
+        ppFeatures.innerHTML = '';
+        if (p.features) {
+          try {
+            const arr = JSON.parse(p.features);
+            const ul = document.createElement('ul');
+            arr.forEach(f => { const li = document.createElement('li'); li.textContent = f; ul.appendChild(li); });
+            ppFeatures.appendChild(ul);
+          } catch (e) {
+            ppFeatures.textContent = p.features;
+          }
+        }
+        if (p.video) {
+          ppVideoSrc.src = p.video;
+          ppVideo.style.display = 'block';
+          try { ppVideo.load(); } catch (e) {}
+        } else {
+          ppVideoSrc.src = '';
+          ppVideo.style.display = 'none';
+        }
+
+        projectPage.classList.add('show');
+        projectPage.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeProject() {
+        projectPage.classList.remove('show');
+        projectPage.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        try { ppVideo.pause(); ppVideo.currentTime = 0; } catch (e) {}
+      }
+
+      // open when clicking the open-project anchors
+      document.querySelectorAll('.open-project').forEach(a => {
+        a.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          const href = a.getAttribute('href') || '';
+          const m = href.match(/^#project\/(.+)/);
+          if (m) {
+            const slug = m[1];
+            location.hash = `project/${slug}`;
+            openProject(slug);
+          }
+        });
+      });
+
+      // double-click card to open (keeps single-click behavior unchanged)
+      document.querySelectorAll('.port-box').forEach(box => {
+        box.addEventListener('dblclick', function () {
+          const slug = box.dataset.slug;
+          if (!slug) return;
+          location.hash = `project/${slug}`;
+          openProject(slug);
+        });
+      });
+
+      // Hash change handler
+      window.addEventListener('hashchange', function () {
+        const h = location.hash || '';
+        const match = h.match(/^#project\/(.+)/);
+        if (match) {
+          openProject(match[1]);
+        } else {
+          closeProject();
+        }
+      });
+
+      // Close controls
+      ppClose.addEventListener('click', function () {
+        location.hash = '#Portfolio';
+        closeProject();
+      });
+      ppBack.addEventListener('click', function () {
+        location.hash = '#Portfolio';
+        closeProject();
+      });
+
+      // clicking outside panel closes it
+      projectPage.addEventListener('click', function (e) {
+        if (e.target === projectPage) {
+          location.hash = '#Portfolio';
+          closeProject();
+        }
+      });
+
+      // ESC closes
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          location.hash = '#Portfolio';
+          closeProject();
+        }
+      });
+
+      // Initial load: if hash points to a project, open it
+      (function initialOpen() {
+        const h = location.hash || '';
+        const match = h.match(/^#project\/(.+)/);
+        if (match) openProject(match[1]);
+      })();
+    })();
+  </script>
+</body>
+
+</html>
